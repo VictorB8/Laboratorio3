@@ -1,0 +1,78 @@
+﻿@{ 
+    ViewBag.Title = "IMC aleatorio";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Resultado IMC </title>
+        <meta charset=" utf-8"/>
+        <!--Esto es un comentario-->
+        <!--en el head se coloca informacion que es para el navegador, scripts, css...-->
+    </head>
+    <body>
+        <!--aqui inicia el cuerpo de la pagina que se esta creando(la vista)-->
+        <h1>Resultado</h1>
+
+        <div class="seccion_1" id="s2">
+            <ul>
+                <li>IMC menor que 18,5 -> peso insuficiente</li>
+                <li>IMC 18,5 y 24.9 -> peso normal</li>
+                <li>IMC mayor que 25 -> sobrepeso</li>
+            </ul>
+            <hr />
+        </div>
+
+        <div class="section_2" id="s3">
+            <a href="/Home" class="btn btn-info">Boton de vuelta al inicio</a>
+        </div>
+
+        <div class="seccion_3" id="s1">
+
+            <table class="table">
+                <
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Nombre</th>
+
+                    <th>Peso</th>
+
+                    <th>Altura</th>
+
+                    <th>IMC</th>
+
+                </tr>
+
+
+
+                @foreach (Laboratorio3.Models.PersonaModel P in ViewBag.lista)
+                {
+                    <tr>
+                        <td>@P.Id</td>
+                        <td>@P.Nombre </td>
+                        <td>@P.Peso</td>
+                        <td>@P.Estatura </td>
+                        @if (ViewBag.listaIMC[P.Id] > 18.5 && ViewBag.listaIMC[P.Id] < 24.9)
+                        {
+                            <td style="color:green;">@ViewBag.listaIMC[P.Id]</td>
+                        }
+                        else
+                        {
+                            <td style="color:red;">@ViewBag.listaIMC[P.Id]</td>
+                        }
+                    </tr>
+                }
+
+
+            </table>
+            <hr />
+        </div>
+
+
+
+
+
+    </body>
+</html>
